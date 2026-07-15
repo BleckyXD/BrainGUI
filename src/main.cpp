@@ -16,35 +16,50 @@ brain Brain;
 // define your global instances of motors and other devices here
 
 
+void testPress()
+{
+    
+    int touchX = Brain.Screen.xPosition();
+    int touchY = Brain.Screen.yPosition();
+    Brain.Screen.setCursor(4,4);
+    if((touchX >= 60 && touchX <= 320) && (touchY >= 60 && touchY <= 320))
+    {
+        Brain.Screen.print("Works!");
+    }
+    Brain.Screen.drawRectangle(120, 120, 100, 100,green);
+}
+void testRelease()
+{
+    Brain.Screen.setCursor(4,4);
+    Brain.Screen.print("Wark");
+    Brain.Screen.drawRectangle(120, 120, 100, 100,white);
+}
+
+void firstScreen()
+{
+
+}
+
+void secondScreen()
+{
+
+}
+
 int main() 
 {
 
-    Brain.Screen.printAt( 10, 50, "Hello V5" );
-    Brain.Screen.clearScreen();
-    Brain.Screen.setFont(fontType::mono30);
-    
+    Brain.Screen.drawRectangle(60, 60, 100, 100, red);
+    Brain.Screen.pressed(testPress);
+    Brain.Screen.released(testRelease);
+
     while(true) 
     {
-        // Check if the screen is being pressed
-        if(Brain.Screen.pressing()) 
-        {
-            int touchX = Brain.Screen.xPosition();
-            int touchY = Brain.Screen.yPosition();
-            
-            // Display the coordinates on the screen
-            Brain.Screen.clearScreen();
-            Brain.Screen.setCursor(2, 2);
-            Brain.Screen.print("Pressed At:");
-            
-            Brain.Screen.setCursor(4, 2);
-            Brain.Screen.print("X: %d", touchX);
-            
-            Brain.Screen.setCursor(5, 2);
-            Brain.Screen.print("Y: %d", touchY);
-        }
+       
+
+       
         
-        // Brief pause to prevent overloading the CPU
-        wait(50, msec);
-    }
+            wait(50, msec);
+        
     
+    }
 }
