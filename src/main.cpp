@@ -7,59 +7,105 @@
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 #include "vex.h"
+#include "UI.h"
+#include <string>
 
 using namespace vex;
 
-// A global instance of vex::brain used for printing to the V5 brain screen
-brain Brain;
-
-// define your global instances of motors and other devices here
-
-
-void testPress()
+struct Button
 {
-    
-    int touchX = Brain.Screen.xPosition();
-    int touchY = Brain.Screen.yPosition();
-    Brain.Screen.setCursor(4,4);
-    if((touchX >= 60 && touchX <= 320) && (touchY >= 60 && touchY <= 320))
-    {
-        Brain.Screen.print("Works!");
-    }
-    Brain.Screen.drawRectangle(120, 120, 100, 100,green);
-}
-void testRelease()
-{
-    Brain.Screen.setCursor(4,4);
-    Brain.Screen.print("Wark");
-    Brain.Screen.drawRectangle(120, 120, 100, 100,white);
-}
+    int width = 100;
+    int height = 100;
+};
+Button button;
 
-void firstScreen()
-{
+// brain Brain;
 
-}
+// auto& Screen = Brain.Screen;
+
+
+
+// void firstScreen()
+// {
+//     Brain.Screen.clearScreen(blue);
+// }
 
 void secondScreen()
 {
 
 }
 
-int main() 
+void createMenu(); //prototype
+
+
+
+int main()
 {
-
-    Brain.Screen.drawRectangle(60, 60, 100, 100, red);
-    Brain.Screen.pressed(testPress);
-    Brain.Screen.released(testRelease);
-
-    while(true) 
-    {
-       
-
-       
-        
-            wait(50, msec);
-        
+    int positionX = 0;
+    int positionY = 0;
     
-    }
+    Rectangle a(positionX, positionY, 100, 100);
+    a.setColor(blue);
+    Label(a, "hey");
+    // a.setColor(white);
+    // a.setText("pina");
+    
+    
 }
+
+
+// void createMenu()
+// {
+//     int width = button.width;
+//     int height = button.height;
+//     const char* text = "hello";
+//     int textHeight = Screen.getStringHeight(text);
+//     int textWidth = Screen.getStringWidth(text);
+
+//     int textCenterX = (width - textWidth)/2;
+//     int textCenterY = (height/2) + (textHeight/2);
+    
+//     Screen.drawRectangle(0, 0, width, height, red);
+
+  
+//     Screen.printAt(textCenterX, textCenterY , "Hello");
+// }
+
+
+// 6:30pm
+
+
+
+
+
+// int main() 
+// {
+//     // Brain.Screen.pressed(testPress);
+//     // Brain.Screen.released(testRelease);
+//     Screen.drawRectangle(120, 120, 100, 100, red);
+
+//     while(true) 
+//     {
+//         int touchX = Brain.Screen.xPosition();
+//         int touchY = Brain.Screen.yPosition();
+        
+//         if(Screen.pressing())
+//         {
+//             if((touchX >= 120 && touchX <= 220) && (touchY >= 120 && touchY <= 220))
+//             {
+//                 Screen.drawRectangle(120, 120, 100, 100,green);
+//             }
+//         }
+//         else
+//         {
+//             Screen.drawRectangle(120, 120, 100, 100, white);
+//         }
+//         // if((touchX >= 60 && touchX <= 320) && (touchY >= 60 && touchY <= 320))
+//         // {
+//         //     Brain.Screen.print("Not Pressing");
+//         //     Brain.Screen.drawRectangle(120, 120, 100, 100,green);
+//         // }
+        
+//         wait(50, msec);
+//     }
+// }
