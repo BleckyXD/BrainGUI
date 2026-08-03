@@ -24,7 +24,7 @@ class renderUI
     public:
     void addBlock();
      
-}
+};
 
 // #pragma once
 // #include <queue>
