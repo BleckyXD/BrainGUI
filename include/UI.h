@@ -10,9 +10,11 @@ class Rectangle
     int width; 
     int x;
     int y;
+    int tet;
     const vex::color color;
 
     RectContent contents;
+    renderUI block;
    
     const char* text;
     

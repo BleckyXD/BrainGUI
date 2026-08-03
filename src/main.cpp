@@ -45,8 +45,8 @@ int main()
     int positionY = 0;
     
     Rectangle a(positionX, positionY, 100, 100);
-    a.setColor(blue);
-    Label(a, "hey");
+    // a.setColor(blue);
+    // Label(a, "hey");
     // a.setColor(white);
     // a.setText("pina");
     

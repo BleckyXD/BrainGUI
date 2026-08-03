@@ -15,23 +15,29 @@ struct RectContent
     RectContent(int height, int width, int x, int y, Rectangle* rect);
 };
 
-
 class renderUI
 {
     private:
-    
-    enum Order 
+    int test;
+    void* object;
+    int ordering;
+    int height;
+    int width;
+    int x;
+    int y;
+    const RectContent contents;
+   
+    enum Order
     {
         RECTANGLES,
         LABELS
     };
 
     std::queue<void*> orderQueue;
-    void* object;
-    int order;
+    
 
     public:
-    renderUI(const RectContent* contents);
+    renderUI(RectContent contents);
     
 
 };
