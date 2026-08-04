@@ -6,10 +6,16 @@ using namespace vex;
 
 
 
-Rectangle::Rectangle(int x, int y, int width, int height, const char* text,  const vex::color& color):
-x(x), y(y), width(width), height(height), text(text), color(color), contents(height, width, x, y, this), 
-block(contents)
-{};
+Rectangle::Rectangle(int x, int y, int width, int height, const char* text,  const vex::color& color)
+{
+    RectContent rct;
+    rct.x = x;
+    rct.y = y;
+    rct.width = width;
+    rct.height = height;
+    rct.type = RECTANGLES;
+    globalUI.addBlock(rct);
+};
 
 // void Rectangle::drawRect()
 // {

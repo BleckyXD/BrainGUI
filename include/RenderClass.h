@@ -1,43 +1,63 @@
 #pragma once
-#include "vex.h"
-#include "UI.h"
-#include <queue>
+#include <vector>
 
-class Rectangle;
+enum OrderBlock
+{
+    RECTANGLES,
+    LABELS
+};
 
 struct RectContent
 {
-    Rectangle* rect;
+    OrderBlock type;
     int height; 
     int width; 
     int x;
     int y;
-    RectContent(int height, int width, int x, int y, Rectangle* rect);
 };
 
 class renderUI
 {
     private:
-    int test;
-    void* object;
-    int ordering;
-    int height;
-    int width;
-    int x;
-    int y;
-    const RectContent contents;
-   
-    enum Order
-    {
-        RECTANGLES,
-        LABELS
-    };
-
-    std::queue<void*> orderQueue;
-    
+    std::vector<RectContent> contentList;
 
     public:
-    renderUI(RectContent contents);
+    void addBlock(const RectContent& rct);
+    void loadUI();
+     
+};
+extern renderUI globalUI;
+// #pragma once
+// #include <queue>
+
+// class Rectangle;
+
+
+
+
+
+// class renderUI
+// {
+//     private:
+//     int x;
+//     int y;
+//     int width;
+//     int height;
+//     //const RectContent contents;
+//     enum Order 
+//     {
+//         RECTANGLES,
+//         LABELS
+//     };
+
+//     std::queue<void*> orderQueue;
+//     void* object;
+//     //int order;
     
 
-};
+//     public:
+//     renderUI(RectContent contents);
+//     void test();
+    
+
+// };
