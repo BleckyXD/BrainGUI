@@ -1,6 +1,6 @@
 #pragma once
 #include "vex.h"
-#include "RenderClass.h"
+
 using namespace vex;
 class Rectangle
 {
@@ -10,11 +10,13 @@ class Rectangle
     int width; 
     int x;
     int y;
+    int textCenterX;
+    int textCenterY;
     int tet;
     const vex::color color;
 
-    RectContent contents;
-    renderUI block;
+    // RectContent contents;
+    // renderUI block;
    
     const char* text;
     
@@ -27,19 +29,42 @@ class Rectangle
     void drawRect();
     void setColor(const vex::color& colorReceived);
     void setText(const char* textReceived);
-    const int getWidth();
-    const int getHeight();
-    const int getX();
-    const int getY();
+    void calculateCenter();
+    // const int getWidth();
+    // const int getHeight();
+    // const int getX();
+    // const int getY();
 
 };
 
 
-class Buttons
+class Button
 {
     private:
+    int height; 
+    int width; 
+    int x;
+    int y;
+    int textCenterX;
+    int textCenterY;
+    int tet;
+    const vex::color color;
 
+    // RectContent contents;
+    // renderUI block;
+   
+    const char* text;
+    
+    //
     public:
+    //We can use multiple constructors depending on the rectangle's needs in the function
+    Button(int x = 0, int y = 0, int width = 0, int height = 0, const char* text = "", const vex::color& color = transparent);
+
+    
+    void drawButton();
+    void setColor(const vex::color& colorReceived);
+    void setText(const char* textReceived);
+    void calculateCenter();
 
 
 };

@@ -12,12 +12,12 @@
 
 using namespace vex;
 
-struct Button
-{
-    int width = 100;
-    int height = 100;
-};
-Button button;
+// struct Button
+// {
+//     int width = 100;
+//     int height = 100;
+// };
+// Button button;
 
 // brain Brain;
 
@@ -30,12 +30,6 @@ Button button;
 //     Brain.Screen.clearScreen(blue);
 // }
 
-void secondScreen()
-{
-
-}
-
-void createMenu(); //prototype
 
 
 
@@ -45,7 +39,11 @@ int main()
     int positionY = 0;
     
     Rectangle a(positionX, positionY, 100, 100);
-    // a.setColor(blue);
+    a.setText("hey");
+    a.setColor(blue);
+
+    Button b(0,0,100,100);
+    
     // Label(a, "hey");
     // a.setColor(white);
     // a.setText("pina");

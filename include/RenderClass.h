@@ -1,32 +1,32 @@
 #pragma once
-#include <vector>
+// #include <vector>
 
-enum OrderBlock
-{
-    RECTANGLES,
-    LABELS
-};
+// enum OrderBlock
+// {
+//     RECTANGLES,
+//     LABELS
+// };
 
-struct RectContent
-{
-    OrderBlock type;
-    int height; 
-    int width; 
-    int x;
-    int y;
-};
+// struct RectContent
+// {
+//     OrderBlock type;
+//     int height; 
+//     int width; 
+//     int x;
+//     int y;
+// };
 
-class renderUI
-{
-    private:
-    std::vector<RectContent> contentList;
+// class renderUI
+// {
+//     private:
+//     std::vector<RectContent> contentList;
 
-    public:
-    void addBlock(const RectContent& rct);
-    void loadUI();
+//     public:
+//     // void addBlock(const RectContent& rct);
+//     void loadUI();
      
-};
-extern renderUI globalUI;
+// };
+// extern renderUI globalUI;
 // #pragma once
 // #include <queue>
 
