@@ -1,17 +1,16 @@
 #include "UI.h"
-#include "vex.h"
 //#include "RenderClass.h"
-
-using namespace vex;
-
 brain Brain;
+//using namespace vex;
 
-auto& Screen = Brain.Screen;
 
+
+ 
 Rectangle::Rectangle(int x, int y, int width, int height, const char* text,  const vex::color& color):
 x(x), y(y), width(width), height(height), text(text), color(color)
 {
     drawRect();
+    
     //function for calculating center only if there is text
 };
 
@@ -50,11 +49,44 @@ void Rectangle::setText(const char* textReceived)
 
 
 
+
+
+
+
+
+
+
+bool Button::initializedButton = false;
+
+
+
+
+
+
 Button::Button(int x, int y, int width, int height, const char* text,  const vex::color& color):
 x(x), y(y), width(width), height(height), text(text), color(color)
 {
+    drawButton();
+    state.push_back(this);
+    if (!initializedButton) 
+    {
+        Screen.pressed(Button::touch);
+        Screen.released(Button::release);
+        //isInitialized = true; // Prevents re-registering for future buttons
+    }
+    
+    
 
+   
 };
+
+void Button::calculatePressArea()
+{
+    if (Screen.pressing())
+    {
+        Screen.clearScreen();
+    }
+}
 
 void Button::calculateCenter()
 {

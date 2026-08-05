@@ -1,7 +1,10 @@
 #pragma once
 #include "vex.h"
+#include <list>
 
 using namespace vex;
+extern brain Brain;
+inline extern auto& Screen = Brain.Screen;
 class Rectangle
 {
     
@@ -41,6 +44,8 @@ class Rectangle
 class Button
 {
     private:
+    static std::list<Button*> state;
+   
     int height; 
     int width; 
     int x;
@@ -49,6 +54,19 @@ class Button
     int textCenterY;
     int tet;
     const vex::color color;
+    static bool initializedButton;
+    void drawButton();
+    void calculateCenter();
+    void calculatePressArea();
+
+    static void touch();
+    static void release();
+
+
+
+
+ 
+     
 
     // RectContent contents;
     // renderUI block;
@@ -61,10 +79,10 @@ class Button
     Button(int x = 0, int y = 0, int width = 0, int height = 0, const char* text = "", const vex::color& color = transparent);
 
     
-    void drawButton();
+    
     void setColor(const vex::color& colorReceived);
     void setText(const char* textReceived);
-    void calculateCenter();
+    
 
 
 };

@@ -6,11 +6,11 @@
 /*    Description:  V5 project                                                */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
-#include "vex.h"
+// #include "vex.h"
 #include "UI.h"
-#include <string>
+// #include <string>
 
-using namespace vex;
+// using namespace vex;
 
 // struct Button
 // {
@@ -38,11 +38,16 @@ int main()
     int positionX = 0;
     int positionY = 0;
     
-    Rectangle a(positionX, positionY, 100, 100);
-    a.setText("hey");
-    a.setColor(blue);
+    // Rectangle a(positionX, positionY, 100, 100);
+    // a.setText("hey");
+    // a.setColor(blue);
 
-    Button b(0,0,100,100);
+    Button b(150,0,200,100);
+    // b.setAction(function);
+
+    
+    b.setText("This is a Button!");
+    b.setColor(red);
     
     // Label(a, "hey");
     // a.setColor(white);
