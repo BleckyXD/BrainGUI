@@ -29,7 +29,10 @@
 // {
 //     Brain.Screen.clearScreen(blue);
 // }
-
+void test()
+{
+    Screen.print("hey");
+}
 
 
 
@@ -43,11 +46,21 @@ int main()
     // a.setColor(blue);
 
     Button b(150,0,200,100);
-    // b.setAction(function);
+    
+    //Button::drawAll();
+
+
+    b.setText("This is a Button!");
+    b.setPressColor(red);
+    b.setReleaseColor(green);
+    
 
     
-    b.setText("This is a Button!");
-    b.setColor(red);
+    Button open(200, 100, 50, 50);
+    open.setAction(test);
+    open.setPressColor(green);
+    open.setReleaseColor(purple);
+    
     
     // Label(a, "hey");
     // a.setColor(white);

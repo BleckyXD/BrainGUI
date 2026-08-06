@@ -36,7 +36,7 @@ void Rectangle::drawRect()
 }
 void Rectangle::setColor(const vex::color& colorReceived)
 {
-    calculateCenter();
+    //calculateCenter();
     Screen.drawRectangle(x, y, width, height, colorReceived);
     Screen.printAt(textCenterX, textCenterY, text);
 }
@@ -56,37 +56,92 @@ void Rectangle::setText(const char* textReceived)
 
 
 
-bool Button::initializedButton = false;
 
+std::list<Button*> Button::state;
 
 
 
 
 
 Button::Button(int x, int y, int width, int height, const char* text,  const vex::color& color):
-x(x), y(y), width(width), height(height), text(text), color(color)
+x(x), y(y), width(width), height(height), text(text), color(color), action(nullptr)
 {
-    drawButton();
+    initializedButton = false;
     state.push_back(this);
+   
+    
     if (!initializedButton) 
     {
         Screen.pressed(Button::touch);
         Screen.released(Button::release);
-        //isInitialized = true; // Prevents re-registering for future buttons
+        initializedButton = true;
     }
+    // drawAll();
+    drawButton();
     
-    
-
-   
 };
 
-void Button::calculatePressArea()
+// void Button::drawAll() {
+//     for (Button* btn : state) {
+//         btn->drawButton();
+//     }
+// }
+void Button::touch()
 {
-    if (Screen.pressing())
+    //Screen.drawRectangle(50,50,100,100);
+    int pressX = Screen.xPosition();
+    int pressY = Screen.yPosition();
+    for(Button* btn : state)
     {
-        Screen.clearScreen();
+        Button& b = *btn;
+
+
+        if((pressX >= b.x && pressX <= (b.width + b.x)) && (pressY >= b.y && pressY <= (b.height + b.y)))
+        {
+            
+            b.setColor(b.pressColor);
+        }
     }
 }
+
+void Button::setAction(std::function<void()> action)
+{
+    this->action = action;
+}
+
+void Button::release()
+{
+    for(Button* btn : state)
+    {
+        int pressX = Screen.xPosition();
+        int pressY = Screen.yPosition();
+        Button& b = *btn;
+        if((pressX >= b.x && pressX <= (b.width + b.x)) && (pressY >= b.y && pressY <= (b.height + b.y)))
+        {
+            b.setColor(b.color);
+            if(b.action != nullptr)
+            {
+                b.action();
+            }
+        }
+        
+        
+    }
+}
+
+void Button::setPressColor(const vex::color& pressColor)
+{
+    this->pressColor = pressColor;
+    
+}
+
+void Button::setReleaseColor(const vex::color& releaseColor)
+{
+    this->releaseColor = releaseColor;
+    this->color = releaseColor;
+}
+
+
 
 void Button::calculateCenter()
 {
@@ -110,7 +165,7 @@ void Button::drawButton()
 }
 void Button::setColor(const vex::color& colorReceived)
 {
-    calculateCenter();
+    // calculateCenter();
     Screen.drawRectangle(x, y, width, height, colorReceived);
     Screen.printAt(textCenterX, textCenterY, text);
 }
@@ -121,37 +176,3 @@ void Button::setText(const char* textReceived)
     Screen.printAt(textCenterX, textCenterY , text);
 }
 
-// const int Rectangle::getWidth()
-// {
-//     return width;
-// }
-
-// const int Rectangle::getHeight()
-// {
-//     return height;
-// }
-
-// const int Rectangle::getX()
-// {
-//     return x;
-// }
-
-// const int Rectangle::getY()
-// {
-//     return y;
-// }
-
-
-// Label::Label(Rectangle& rect, const char* text): rect(rect),text(text)
-// {
-//     writeText();
-// };
-
-// void Label::writeText()
-// {
-//     int textHeight = Screen.getStringHeight(text);
-//     int textWidth = Screen.getStringWidth(text);
-//     int textCenterX = rect.getX() + (rect.getWidth() - textWidth)/2;
-//     int textCenterY = rect.getY() + (rect.getHeight()/2) + (textHeight/2);
-//     Screen.printAt(textCenterX, textCenterY , text);
-// }
