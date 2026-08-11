@@ -8,7 +8,10 @@
 /*----------------------------------------------------------------------------*/
 // #include "vex.h"
 #include "UI.h"
-// #include <string>
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include "cords.h"
 
 // using namespace vex;
 
@@ -33,6 +36,11 @@ void test()
 {
     Screen.print("hey");
 }
+struct Point 
+{
+    int x;
+    int y;
+};
 
 
 
@@ -40,26 +48,42 @@ int main()
 {
     int positionX = 0;
     int positionY = 0;
+    drawLogo();
+    Screen.setPenColor(red);
+    // Rectangle a(95, 10, 25, 25);
+    // a.setColor(red);
+    
+    
+
+    //using json = nlohmann::json;
+    // std::ifstream file("coordinator.json");
+    // json data = json::parse(file);
+        
+    // for (auto& dat : data)
+    // {
+    //     Screen.print(dat);
+    // }
+
     
     // Rectangle a(positionX, positionY, 100, 100);
     // a.setText("hey");
     // a.setColor(blue);
 
-    Button b(150,0,200,100);
+    // Button b(150,0,200,100);
     
-    //Button::drawAll();
+    // //Button::drawAll();
 
 
-    b.setText("This is a Button!");
-    b.setPressColor(red);
-    b.setReleaseColor(green);
+    // b.setText("This is a Button!");
+    // b.setPressColor(red);
+    // b.setReleaseColor(green);
     
 
     
-    Button open(200, 100, 50, 50);
-    open.setAction(test);
-    open.setPressColor(green);
-    open.setReleaseColor(purple);
+    // Button open(200, 100, 50, 50);
+    // open.setAction(test);
+    // open.setPressColor(green);
+    // open.setReleaseColor(purple);
     
     
     // Label(a, "hey");
